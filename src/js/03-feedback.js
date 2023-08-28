@@ -32,6 +32,10 @@ function populateForm() {
   if (!savedData) {
     return;
   }
+  if (!email || !message) {
+    alert('oh my God');
+    return;
+  }
   email.value = savedData.email ?? '';
   message.value = savedData.message ?? '';
 }
