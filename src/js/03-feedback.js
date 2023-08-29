@@ -16,10 +16,14 @@ function onFeedbackFormSubmit(e) {
   console.log({ email: email.value, message: message.value });
   localStorage.removeItem(STORAGE_KEY);
   e.target.reset();
+  if (!email || !message) {
+    alert('oh my God');
+    return;
+  }
 }
 
 function onFeedbackFormInput() {
-  dataForm = {
+  const dataForm = {
     email: refs.feedbackForm.email.value,
     message: refs.feedbackForm.message.value,
   };
@@ -32,10 +36,7 @@ function populateForm() {
   if (!savedData) {
     return;
   }
-  if (!email || !message) {
-    alert('oh my God');
-    return;
-  }
+
   email.value = savedData.email ?? '';
   message.value = savedData.message ?? '';
 }
